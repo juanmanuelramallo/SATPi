@@ -1,24 +1,42 @@
-# README
+# SATPI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is work in progress
 
-Things you may want to cover:
+## Models
 
-* Ruby version
+- Address
+  - Country
+  - State
+  - Zip
+  - Address
 
-* System dependencies
+- Node
+  - *Has one address*
+  - *Has many sensors*
+  - *Has many packages through sensors*
+  - State: *[active, inactive, ...]*
+  - Latitute
+  - Longitude
+  - Last update at
 
-* Configuration
+- Sensor
+  - *Has many packages*
+  - Type: *[level-o-meter, pluviometer]*
+  - Last update at
 
-* Database creation
+- Package
+  - *Belongs to Sensor*
+  - Data
 
-* Database initialization
+## Nodes
 
-* How to run the test suite
+- Each node hast to send the data with the following JSON format
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+  id: [id of the current node],
+  [
+    { id: [id of the sensor_a], data: [value to send from the sensor] },
+    { id: [id of the sensor_b], data: [value to send from the sensor] },
+    ...
+  ]
+```
