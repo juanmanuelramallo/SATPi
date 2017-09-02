@@ -15,7 +15,6 @@ class NodeDashboard < Administrate::BaseDashboard
     state: Field::String.with_options(searchable: false),
     latitude: Field::String,
     longitude: Field::String,
-    last_update_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,23 +25,22 @@ class NodeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :address,
     :sensors,
     :packages,
-    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
     :address,
     :sensors,
     :packages,
-    :id,
     :state,
     :latitude,
     :longitude,
-    :last_update_at,
     :created_at,
     :updated_at,
   ].freeze
@@ -57,13 +55,12 @@ class NodeDashboard < Administrate::BaseDashboard
     :state,
     :latitude,
     :longitude,
-    :last_update_at,
   ].freeze
 
   # Overwrite this method to customize how nodes are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(node)
-  #   "Node ##{node.id}"
-  # end
+  def display_resource(node)
+    "Nodo ##{node.id} - #{ node.address.try :address }"
+  end
 end

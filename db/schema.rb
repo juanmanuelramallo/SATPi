@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830204911) do
+ActiveRecord::Schema.define(version: 20170902151052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170830204911) do
     t.integer "state"
     t.string "latitude"
     t.string "longitude"
-    t.datetime "last_update_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -44,10 +44,11 @@ ActiveRecord::Schema.define(version: 20170830204911) do
 
   create_table "sensors", force: :cascade do |t|
     t.integer "type_name"
-    t.string "last_update_at"
     t.integer "node_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "data_type"
+    t.string "description"
   end
 
 end

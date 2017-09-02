@@ -25,17 +25,18 @@ class AddressDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :node,
     :id,
-    :country,
-    :state,
+    :node,
+    :address,
+    :city,
+    :state
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :node,
     :id,
+    :node,
     :country,
     :state,
     :city,
@@ -60,7 +61,7 @@ class AddressDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how addresses are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(address)
-  #   "Address ##{address.id}"
-  # end
+  def display_resource(address)
+    address.address
+  end
 end

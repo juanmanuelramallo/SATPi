@@ -11,10 +11,10 @@ class SensorDashboard < Administrate::BaseDashboard
     packages: Field::HasMany,
     id: Field::Number,
     type_name: Field::String.with_options(searchable: false),
-    last_update_at: Field::String,
-    node_id: Field::Number,
+    node: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    data_type: Field::String.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,20 +23,19 @@ class SensorDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :packages,
     :id,
+    :packages,
     :type_name,
-    :last_update_at,
+    :data_type,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :packages,
     :id,
+    :packages,
     :type_name,
-    :last_update_at,
-    :node_id,
+    :node,
     :created_at,
     :updated_at,
   ].freeze
@@ -45,16 +44,15 @@ class SensorDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :packages,
     :type_name,
-    :last_update_at,
-    :node_id,
+    :data_type,
+    :node,
   ].freeze
 
   # Overwrite this method to customize how sensors are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(sensor)
-  #   "Sensor ##{sensor.id}"
-  # end
+  def display_resource(sensor)
+    "Sensor ##{sensor.id} - #{ sensor.type_name }"
+  end
 end

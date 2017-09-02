@@ -28,15 +28,16 @@
   - *Belongs to Sensor*
   - Data
 
-## Nodes
-
-- Each node hast to send the data with the following JSON format
-
+## How to send data from a node?
+Each node and sensor has a unique id used to identify it.
+There is an api endpoint called `/api/v1/packages/` accepting `post` actions.
+This actions require the params: `sensor_id` and `data`
+Its response is the `package` created it everything went ok. If it fails, it will render a informative json object.
+TL;DR
 ```
-  id: [id of the current node],
-  [
-    { id: [id of the sensor_a], data: [value to send from the sensor] },
-    { id: [id of the sensor_b], data: [value to send from the sensor] },
-    ...
-  ]
+post [domain]/api/v1/packages
+{
+  sensor_id: [id],
+  data: [any number]
+}
 ```
