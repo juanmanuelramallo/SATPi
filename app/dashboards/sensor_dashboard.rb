@@ -10,11 +10,12 @@ class SensorDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     packages: Field::HasMany,
     id: Field::Number,
-    type_name: Field::String.with_options(searchable: false),
+    type_name: EnumField,
     node: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    data_type: Field::String.with_options(searchable: false)
+    data_type: Field::String.with_options(searchable: false),
+    description: Field::Text.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,17 +25,19 @@ class SensorDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :packages,
     :type_name,
     :data_type,
+    :packages,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :packages,
     :type_name,
+    :data_type,
+    :description,
+    :packages,
     :node,
     :created_at,
     :updated_at,
@@ -44,9 +47,10 @@ class SensorDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :node,
     :type_name,
     :data_type,
-    :node,
+    :description,
   ].freeze
 
   # Overwrite this method to customize how sensors are displayed

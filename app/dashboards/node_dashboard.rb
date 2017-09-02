@@ -17,6 +17,7 @@ class NodeDashboard < Administrate::BaseDashboard
     longitude: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    description: Field::Text.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,12 +30,14 @@ class NodeDashboard < Administrate::BaseDashboard
     :address,
     :sensors,
     :packages,
+    :description
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :description,
     :address,
     :sensors,
     :packages,
@@ -49,10 +52,10 @@ class NodeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :address,
     :state,
     :latitude,
     :longitude,
+    :description
   ].freeze
 
   # Overwrite this method to customize how nodes are displayed
