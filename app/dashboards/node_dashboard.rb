@@ -12,7 +12,7 @@ class NodeDashboard < Administrate::BaseDashboard
     sensors: Field::HasMany,
     packages: Field::HasMany,
     id: Field::Number,
-    state: Field::String.with_options(searchable: false),
+    state: EnumField,
     latitude: Field::String,
     longitude: Field::String,
     created_at: Field::DateTime,
@@ -50,8 +50,6 @@ class NodeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :address,
-    :sensors,
-    :packages,
     :state,
     :latitude,
     :longitude,
