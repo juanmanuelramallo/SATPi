@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :addresses
     resources :nodes
-    resources :packages
+    resources :packages, except: [:new, :edit]
     resources :sensors
 
     root to: "nodes#index"

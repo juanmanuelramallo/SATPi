@@ -40,10 +40,10 @@ class PackageDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :sensor,
-    :data,
-  ].freeze
+  # FORM_ATTRIBUTES = [
+  #   :sensor,
+  #   :data,
+  # ].freeze
 
   # Overwrite this method to customize how packages are displayed
   # across all pages of the admin dashboard.
