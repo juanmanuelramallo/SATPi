@@ -1,5 +1,5 @@
 class Api::PackagesController < ApiController
-  before_action :set_sensor
+  before_action :set_sensor, except: :batch_create
 
   def index
     render json: @sensor.packages, status: :ok
@@ -13,6 +13,18 @@ class Api::PackagesController < ApiController
       render json: package, status: :ok
     rescue
       render json: { STATUS: "ERROR", message: "Un error inesperado impidió guardar el paquete. Intenta nuevamente" }, status: :bad_request
+    end
+  end
+
+  def batch_create
+    begin
+      params[:packages].each do |package|
+        sensor = Sensor.find package[:sensor_id]
+        package = sensor.packages.create!(data: package[:data])
+      end
+      render json: { STATUS: "SUCCESS", message: "All packages have been create successfully" }, status: :ok
+    rescue
+      render json: { STATUS: "ERROR", message: "Error inesperado. Intente nuevamente" }, status: :bad_request
     end
   end
 

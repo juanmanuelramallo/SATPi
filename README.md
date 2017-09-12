@@ -17,12 +17,10 @@
   - State: *[active, inactive, ...]*
   - Latitute
   - Longitude
-  - Last update at
 
 - Sensor
   - *Has many packages*
   - Type: *[level-o-meter, pluviometer]*
-  - Last update at
 
 - Package
   - *Belongs to Sensor*
@@ -37,7 +35,26 @@ TL;DR
 ```
 post [domain]/api/v1/packages
 {
-  sensor_id: [id],
-  data: [any number]
+  "sensor_id": [id],
+  "data": [any number]
+}
+```
+
+To send several packages you need to use `/api/v1/batch_create_packages` with a 'post' method.
+It should receive a json object with the following format:
+```
+post [domain]/api/v1/batch_create_packages
+{
+	"packages": [
+		{
+			"sensor_id": [id],
+			"data": [any data]
+		},
+		{
+			"sensor_id": [id2],
+			"data": [any data 2]
+		},
+		...
+	]
 }
 ```

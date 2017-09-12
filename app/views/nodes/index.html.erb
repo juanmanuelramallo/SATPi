@@ -1,0 +1,21 @@
+<div class="container nodes">
+	<h1 class="title center">SATPi <i class="material-icons">beenhere</i></h1>
+	<%= render "toolbar" %>
+	<div class="row">
+		<div class="col s8 internal-data">
+			<h2 class="title">Nuestros nodos</h2>
+			<% @nodes.each do |node| %>
+				<%= render node %>
+			<% end %>
+		</div>
+
+		<div class="col s4 external-data center">
+			<h4 class="title">Información externa</h4>
+			<div class="data">
+				<p class="value"><span class="data"><%= @external_data[:num] %></span> <small>mm</small></p>
+				<p class="date"></p>
+				<p class="address">La Plata, Buenos Aires</p>
+			</div>
+		</div>
+	</div>
+</div>

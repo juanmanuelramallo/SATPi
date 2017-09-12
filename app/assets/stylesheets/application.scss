@@ -1,0 +1,69 @@
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import "materialize";
+
+html,
+body {
+	min-height: 100vh;
+	font-weight: 100;
+	background-color: color("grey", "darken-3");
+}
+
+.nodes {
+	.title {
+//		background-color: color("grey", "darken-3");
+		color: white;
+	}
+
+	.node {
+		background-color: color("blue", "lighten-5");
+		padding: 10px 30px;
+		margin: 10px 0px;
+
+		.name {
+			color: black;
+		}
+	}
+
+	.sensor {
+		background-color: color("grey", "lighten-2");
+		padding:10px;
+		margin: 5px;
+	}
+
+	.packages {
+		li {
+			background-color: color("blue", "lighten-5");
+			padding: 5px 15px;
+			margin: 3px 0px;
+			transition: 0.3s ease;
+			cursor: pointer;
+
+			&:hover {
+				background-color: color("blue", "lighten");
+				font-weight: bold;
+			}
+
+			span.data {
+				font-size: 24px;
+			}
+		}
+	}
+
+	.external-data {
+		.data {
+			background-color: color("blue", "lighten-5");
+			padding: 30px 15px 10px 15px;
+
+			.value {
+				font-size: 42px;
+				text-align: center;
+			}
+
+			.date {
+				text-align: center;
+			}
+		}
+	}
+}

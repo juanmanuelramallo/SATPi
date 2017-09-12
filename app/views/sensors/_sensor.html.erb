@@ -1,0 +1,11 @@
+<div class="sensor">
+	<h4><%= sensor.name %></h4>
+	<ul class="packages">
+		<% sensor.packages.order(created_at: :desc).last(5).each do |package| %>
+			<li onClick="function() { window.location.assign(<%= "#{admin_package_url(package)}" %>) }">
+				<span class="data"><%= package.data %> <%= sensor.data_type %></span><br>
+				<%= package.created_at.to_s(:short) %>
+			</li>
+		<% end %>
+	</ul>
+</div>
