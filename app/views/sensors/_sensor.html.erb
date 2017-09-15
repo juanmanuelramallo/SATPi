@@ -2,7 +2,7 @@
 	<h4><%= sensor.name %></h4>
   <p class="limit">Valor máximo permitido: <%= "#{sensor.limit} #{sensor.data_type}" %></p>
 	<ul class="packages">
-		<% sensor.packages.order(created_at: :desc).last(5).each do |package| %>
+		<% sensor.packages.order(created_at: :desc).first(5).each do |package| %>
 			<li class="<%= "alert" if package.data > sensor.limit %>" data-url="<%= admin_package_url(package) %>">
 				<span class="data"><%= package.data %> <%= sensor.data_type %></span><br>
 				<%= package.created_at.to_s(:short) %>
