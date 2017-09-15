@@ -15,4 +15,8 @@ $(document).ready(function () {
 		}).success(response => $externalData.text(response.value.toFixed(2)));
 	}, 10000);
 
+  $('ul.packages li').click(function() {
+    location.assign($(this).data('url'));
+  })
+
 });

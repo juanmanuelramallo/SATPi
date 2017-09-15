@@ -1,7 +1,11 @@
 <div class="node">
 	<h3 class="name">Nodo #<%= node.id %></h3>
-	<p class="address"><strong>Dirección:</strong> <%= node.address.to_s %></p>
-	<p class="description"><strong>Descripción:</strong> <%= node.description %></p>
+  <% if node.address.present? %>
+    <p class="address"><strong>Dirección:</strong> <%= node.address.to_s %></p>
+  <% end %>
+  <% if node.description.present? %>
+    <p class="description"><strong>Descripción:</strong> <%= node.description %></p>
+  <% end %>
 	<% node.sensors.each do |sensor| %>
 		<%= render sensor %>
 	<% end %>

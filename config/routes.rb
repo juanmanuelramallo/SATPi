@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :addresses
     resources :nodes
-    resources :packages, except: [:new, :edit]
+    resources :packages, except: [:edit]
     resources :sensors
-
+    resources :users
+    resources :alerts, except: [:new, :edit]
     root to: "nodes#index"
   end
   namespace :api do

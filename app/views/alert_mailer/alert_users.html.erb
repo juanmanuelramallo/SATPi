@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Alerta en sensor <%= @sensor.id%> - <%= @alert.created_at.to_s(:long) %></h1>
+    <p><strong>Dirección:</strong> <%= @sensor.node.address.to_s %></p>
+    <p><strong>Estado:</strong> <%= @alert.status %></p>
+    <p><strong>Lectura sensor:</strong> <%= "#{@alert.package.data} #{@sensor.data_type}" %></p>
+    <p>
+      Este mail es una notificación de aviso para saber que el sensor #<%= @sensor.id %> sobrepasó el límite esperado de <%= "#{@sensor.limit} #{@sensor.data_type}" %>.
+    </p>
+    <hr>
+    <p>SATPi</p>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+Alerta en sensor <%= @sensor.id%> - <%= @alert.created_at.to_s(:long) %>
+Estado: <%= @alert.status%>
+Lectura sensor: <%= "#{@alert.package.data} #{@sensor.data_type}" %>
+Este mail es una notificación de aviso para saber que el sensor <%= @sensor.id %> sobrepasó el límite esperado de <%= "#{@sensor.limit} #{@sensor.data_type}" %>.
+
+-----
+SATPi

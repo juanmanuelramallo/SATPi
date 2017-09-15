@@ -36,9 +36,14 @@ body {
 		li {
 			background-color: color("blue", "lighten-5");
 			padding: 5px 15px;
-			margin: 3px 0px;
+			margin: 10px 0px;
 			transition: 0.3s ease;
 			cursor: pointer;
+      border-left: 5px solid skyblue;
+
+      &.alert {
+        border-left: 5px solid indianred;
+      }
 
 			&:hover {
 				background-color: color("blue", "lighten");

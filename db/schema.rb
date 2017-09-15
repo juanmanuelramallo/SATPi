@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902151052) do
+ActiveRecord::Schema.define(version: 20170915071228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170902151052) do
     t.integer "node_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer "status"
+    t.integer "sensor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "package_id"
   end
 
   create_table "nodes", force: :cascade do |t|
@@ -49,6 +58,16 @@ ActiveRecord::Schema.define(version: 20170902151052) do
     t.datetime "updated_at", null: false
     t.string "data_type"
     t.string "description"
+    t.integer "limit"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "nombre"
+    t.string "email"
+    t.integer "address_id"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

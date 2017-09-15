@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SensorDashboard < Administrate::BaseDashboard
+class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,15 +8,13 @@ class SensorDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    packages: Field::HasMany,
     id: Field::Number,
-    type_name: EnumField,
-    node: Field::BelongsTo,
+    nombre: Field::String,
+    email: Field::String,
+    address: Field::BelongsTo,
+    phone: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    data_type: Field::String.with_options(searchable: false),
-    description: Field::Text.with_options(searchable: false),
-    limit: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,22 +24,19 @@ class SensorDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :type_name,
-    :data_type,
-    :limit,
-    :packages,
+    :nombre,
+    :email,
+    :phone,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :type_name,
-    :data_type,
-    :description,
-    :packages,
-    :node,
-    :limit,
+    :nombre,
+    :email,
+    :address,
+    :phone,
     :created_at,
     :updated_at,
   ].freeze
@@ -50,17 +45,16 @@ class SensorDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :node,
-    :type_name,
-    :data_type,
-    :description,
-    :limit,
+    :nombre,
+    :email,
+    :address,
+    :phone,
   ].freeze
 
-  # Overwrite this method to customize how sensors are displayed
+  # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(sensor)
-    "Sensor ##{sensor.id} - #{ sensor.type_name }"
-  end
+  # def display_resource(user)
+  #   "User ##{user.id}"
+  # end
 end
