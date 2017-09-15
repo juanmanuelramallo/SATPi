@@ -1,6 +1,65 @@
 ---
 es:
   activerecord:
+    models:
+      address:
+        one: Dirección
+        other: Direcciones
+      node:
+        one: Nodo
+        other: Nodos
+      package:
+        one: Paquete
+        other: Paquetes
+      sensor:
+        one: Sensor
+        other: Sensores
+      user:
+        one: Usuario
+        other: Usuarios
+      alert:
+        one: Alerta
+        other: Alertas
+    attributes:
+      address:
+        country: Pais
+        state: Provincia
+        city: Ciudad
+        zip: Zip
+        address: Dirección
+        created_at: Creado el
+        updated_at: Actualizado el
+      node:
+        state: Estado
+        latitude: Latitud
+        longitude: Longitud
+        description: Descripción
+        created_at: Creado el
+        updated_at: Actualizado el
+      package:
+        sensor: Sensor
+        data: Dato
+        created_at: Creado el
+        updated_at: Actualizado el
+      sensor:
+        node: Nodo
+        type_name: Nombre del tipo de sensor
+        data_type: Tipo de dato
+        description: Descripción
+        limit: Umbral máximo
+        created_at: Creado el
+        updated_at: Actualizado el
+      user:
+        name: Nombre
+        address: Dirección
+        phone: Teléfono
+        created_at: Creado el
+        updated_at: Actualizado el
+      alert:
+        sensor: Sensor
+        status: Estado
+        created_at: Creado el
+        updated_at: Actualizado el
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
